@@ -12,8 +12,16 @@ const dashboard = {
     type: 'group',
     children: [
         {
-            id: 'default',
-            title: 'Dashboard',
+            id: 'data',
+            title: 'Data Optimization',
+            type: 'item',
+            url: '/dashboard/default',
+            icon: icons.IconDashboard,
+            breadcrumbs: false
+        },
+        {
+            id: 'hardware',
+            title: 'Hardware Optimization',
             type: 'item',
             url: '/dashboard/default',
             icon: icons.IconDashboard,
