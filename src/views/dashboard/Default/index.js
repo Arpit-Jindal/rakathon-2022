@@ -35,6 +35,8 @@ import AnimateButton from 'ui-component/extended/AnimateButton';
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
+import mainGraph from '../../../images/main_graph.jpeg';
+
 const Dashboard = () => {
     const [isLoading, setLoading] = useState(true);
     useEffect(() => {
@@ -85,9 +87,9 @@ const Dashboard = () => {
         } else if (screenNumber === 'screen2') {
             return (
                 <>
-                    <img src="../../images/main_graph.jpeg" alt="main graph" />
+                    <img src={mainGraph} alt="main graph" />
                     <AnimateButton>
-                        <Button fullWidth size="large" variant="contained" color="primary" onClick={() => inputRef.current.click()}>
+                        <Button fullWidth size="large" variant="contained" color="primary" onClick={() => setScreenNumber('screen3')}>
                             Find Similar Dataset
                         </Button>
                     </AnimateButton>
