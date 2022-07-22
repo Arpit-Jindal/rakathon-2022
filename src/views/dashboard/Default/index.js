@@ -36,6 +36,7 @@ import AnimateButton from 'ui-component/extended/AnimateButton';
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
 import mainGraph from '../../../images/main_graph.jpeg';
+import datasetSimilarity from '../../../images/datasetSimilarity.png';
 
 const Dashboard = () => {
     const [isLoading, setLoading] = useState(true);
@@ -95,7 +96,13 @@ const Dashboard = () => {
                     </AnimateButton>
                 </>
             );
-        } else {
+        } else if (screenNumber === 'screen3') {
+            return (
+                <>
+                    <MuiTypography textAlign="center">____________ dataset is similar to __________</MuiTypography>
+                    <img width={1200} src={datasetSimilarity} alt="datasetSimilarity" />
+                </>
+            );
         }
     };
     return getContent();
