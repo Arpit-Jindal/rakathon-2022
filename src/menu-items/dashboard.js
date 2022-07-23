@@ -23,7 +23,7 @@ const dashboard = {
             id: 'hardware',
             title: 'Hardware Optimization',
             type: 'item',
-            url: '/dashboard/default',
+            url: '/dashboard/hardware',
             icon: icons.IconDashboard,
             breadcrumbs: false
         }

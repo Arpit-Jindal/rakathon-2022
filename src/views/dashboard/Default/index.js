@@ -37,6 +37,7 @@ import AnimateButton from 'ui-component/extended/AnimateButton';
 
 import mainGraph from '../../../images/main_graph.jpeg';
 import datasetSimilarity from '../../../images/datasetSimilarity.png';
+import algoGraph from '../../../images/algoGraph.png';
 
 const Dashboard = () => {
     const [isLoading, setLoading] = useState(true);
@@ -88,7 +89,9 @@ const Dashboard = () => {
         } else if (screenNumber === 'screen2') {
             return (
                 <>
-                    <img src={mainGraph} alt="main graph" />
+                    <Box textAlign="center" border="1px solid gray">
+                        <img src={mainGraph} alt="main graph" width={1000} />
+                    </Box>
                     <AnimateButton>
                         <Button fullWidth size="large" variant="contained" color="primary" onClick={() => setScreenNumber('screen3')}>
                             Find Similar Dataset
@@ -99,8 +102,17 @@ const Dashboard = () => {
         } else if (screenNumber === 'screen3') {
             return (
                 <>
-                    <MuiTypography textAlign="center">____________ dataset is similar to __________</MuiTypography>
-                    <img width={1200} src={datasetSimilarity} alt="datasetSimilarity" />
+                    <MuiTypography fontWeight={700} fontSize={20} marginBottom={5} textAlign="center">
+                        ____________ dataset is similar to __________
+                    </MuiTypography>
+                    <Box textAlign="center">
+                        <Box marginBottom={5}>
+                            <img width={400} src={algoGraph} alt="algoGraph" />
+                        </Box>
+                        <Box>
+                            <img width={800} src={datasetSimilarity} alt="datasetSimilarity" />
+                        </Box>
+                    </Box>
                 </>
             );
         }
