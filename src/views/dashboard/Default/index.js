@@ -38,6 +38,7 @@ import AnimateButton from 'ui-component/extended/AnimateButton';
 import mainGraph from '../../../images/main_graph.jpeg';
 import datasetSimilarity from '../../../images/datasetSimilarity.png';
 import algoGraph from '../../../images/algoGraph.png';
+import loadingAnimation from '../../../images/loadingAnimation.gif';
 
 const Dashboard = () => {
     const [isLoading, setLoading] = useState(true);
@@ -65,10 +66,14 @@ const Dashboard = () => {
                                 <AnimateButton>
                                     <input
                                         type="file"
+                                        accept=".csv"
                                         style={{ visibility: 'hidden' }}
                                         ref={inputRef}
                                         onChange={() => {
-                                            setScreenNumber('screen2');
+                                            setScreenNumber('animation');
+                                            setTimeout(() => {
+                                                setScreenNumber('screen2');
+                                            }, 6000);
                                         }}
                                     />
                                     <Button
@@ -89,21 +94,33 @@ const Dashboard = () => {
         } else if (screenNumber === 'screen2') {
             return (
                 <>
-                    <Box textAlign="center" border="1px solid gray">
-                        <img src={mainGraph} alt="main graph" width={1000} />
+                    <Box textAlign="center">
+                        <img src={mainGraph} alt="main graph" width={800} marginBottom={5} />
+                        <Box>
+                            <AnimateButton>
+                                <Button
+                                    size="large"
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={() => {
+                                        setScreenNumber('animation');
+                                        setTimeout(() => {
+                                            setScreenNumber('screen3');
+                                        }, 6000);
+                                    }}
+                                >
+                                    Find Similar Dataset
+                                </Button>
+                            </AnimateButton>
+                        </Box>
                     </Box>
-                    <AnimateButton>
-                        <Button fullWidth size="large" variant="contained" color="primary" onClick={() => setScreenNumber('screen3')}>
-                            Find Similar Dataset
-                        </Button>
-                    </AnimateButton>
                 </>
             );
         } else if (screenNumber === 'screen3') {
             return (
                 <>
                     <MuiTypography fontWeight={700} fontSize={20} marginBottom={5} textAlign="center">
-                        ____________ dataset is similar to __________
+                        This dataset is 82.4% similar to Spam Detection dataset in the database.
                     </MuiTypography>
                     <Box textAlign="center">
                         <Box marginBottom={5}>
@@ -114,6 +131,12 @@ const Dashboard = () => {
                         </Box>
                     </Box>
                 </>
+            );
+        } else {
+            return (
+                <Box textAlign="center">
+                    <img src={loadingAnimation} alt="main graph" width={700} />
+                </Box>
             );
         }
     };

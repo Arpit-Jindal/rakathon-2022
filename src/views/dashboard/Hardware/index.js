@@ -37,6 +37,7 @@ import AnimateButton from 'ui-component/extended/AnimateButton';
 
 import graph6 from '../../../images/6_graphs.png';
 import energyGraph from '../../../images/energy_graph.jpeg';
+import loadingAnimation from '../../../images/loadingAnimation.gif';
 
 const Hardware = () => {
     const [isLoading, setLoading] = useState(true);
@@ -56,7 +57,18 @@ const Hardware = () => {
                     </Box>
 
                     <AnimateButton>
-                        <Button fullWidth size="large" variant="contained" color="primary" onClick={() => setScreenNumber('screen3')}>
+                        <Button
+                            fullWidth
+                            size="large"
+                            variant="contained"
+                            color="primary"
+                            onClick={() => {
+                                setScreenNumber('animation');
+                                setTimeout(() => {
+                                    setScreenNumber('screen3');
+                                }, 6000);
+                            }}
+                        >
                             Optimize
                         </Button>
                     </AnimateButton>
@@ -68,10 +80,21 @@ const Hardware = () => {
                     <Box textAlign="center">
                         <img width={1200} src={energyGraph} alt="energyGraph" />
                     </Box>
-                    <MuiTypography fontWeight={700} fontSize={20} marginTop={10} textAlign="center">
-                        After optimization energy consumption has been reduced by 30%
-                    </MuiTypography>
+                    <Box display="flex" alignItems="baseline" marginLeft={30}>
+                        <MuiTypography fontWeight={500} fontSize={30} marginTop={10}>
+                            After optimization energy consumption has been reduced by
+                        </MuiTypography>
+                        <MuiTypography marginLeft={2} fontWeight={900} fontSize={40}>
+                            30%
+                        </MuiTypography>
+                    </Box>
                 </>
+            );
+        } else {
+            return (
+                <Box textAlign="center">
+                    <img src={loadingAnimation} alt="main graph" width={700} />
+                </Box>
             );
         }
     };
